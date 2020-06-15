@@ -83,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** Will show a 'Touch ID' or 'Face ID' (depending on `biometricType`) button if the user is allowed to log in that way. (Default is NO) */
 @property (nonatomic, assign) BOOL allowBiometricValidation;
 
-/** Will show a default 'Cancel' button if rightAccessoryButton is not set. (Default is YES) */
+/** Will show a default 'Cancel' button if rightAccessoryButton is not set. (Default is NO) */
 @property (nonatomic, assign) BOOL allowCancel;
 
 /** Will handle delete button press as delete last symbol (Default is YES) */
