@@ -80,7 +80,7 @@
 {
     self.transitioningDelegate = self;
     self.automaticallyPromptForBiometricValidation = NO;
-    self.allowCancel = YES;
+    self.allowCancel = NO;
     self.handleDeletePress = YES;
 
     if (TOPasscodeViewStyleIsTranslucent(self.style)) {
