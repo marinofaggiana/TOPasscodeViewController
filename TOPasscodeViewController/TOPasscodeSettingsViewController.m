@@ -80,6 +80,15 @@ const CGFloat kTOPasscodeKeypadMaxHeight = 330.0f;
 
 - (void)setUp
 {
+    if (@available(iOS 13.0, *)) {
+        if ([self.traitCollection userInterfaceStyle] == UIUserInterfaceStyleDark) {
+            self.style = TOPasscodeViewStyleTranslucentDark;
+        } else {
+            self.style = TOPasscodeViewStyleTranslucentLight;
+        }
+        [self applyThemeForStyle:_style];
+    }
+    
     _failedPasscodeAttemptCount = 0;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
@@ -187,6 +196,20 @@ const CGFloat kTOPasscodeKeypadMaxHeight = 330.0f;
 
     self.state = self.requireCurrentPasscode ? TOPasscodeSettingsViewStateEnterCurrentPasscode : TOPasscodeSettingsViewStateEnterNewPasscode;
     [self updateContentForState:self.state type:self.passcodeType animated:NO];
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection
+{
+    [super traitCollectionDidChange:previousTraitCollection];
+    
+    if (@available(iOS 13.0, *)) {
+        if ([self.traitCollection userInterfaceStyle] == UIUserInterfaceStyleDark) {
+            self.style = TOPasscodeViewStyleTranslucentDark;
+        } else {
+            self.style = TOPasscodeViewStyleTranslucentLight;
+        }
+        [self applyThemeForStyle:_style];
+    }
 }
 
 #pragma mark - View Update -
