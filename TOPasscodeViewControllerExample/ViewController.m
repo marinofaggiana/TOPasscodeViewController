@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.passcode = @"1234";
+    self.passcode = @"0000";
     self.showButtonLettering = YES;
 
     // Enable mipmaps so the rescaled image will look properly sampled
@@ -49,7 +49,7 @@
 
 - (IBAction)showButtonTapped:(id)sender
 {
-    TOPasscodeViewController *passcodeViewController = [[TOPasscodeViewController alloc] initWithStyle:self.style passcodeType:self.type];
+    TOPasscodeViewController *passcodeViewController = [[TOPasscodeViewController alloc] initPasscodeType:self.type];
     passcodeViewController.delegate = self;
     passcodeViewController.allowBiometricValidation = self.biometricsAvailable;
     passcodeViewController.biometryType = self.faceIDAvailable ? TOPasscodeBiometryTypeFaceID : TOPasscodeBiometryTypeTouchID;

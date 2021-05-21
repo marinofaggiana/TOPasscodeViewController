@@ -74,9 +74,6 @@ NS_ASSUME_NONNULL_BEGIN
 /** A delegate object, in charge of verifying the PIN code entered by the user */
 @property (nonatomic, weak, nullable) id<TOPasscodeViewControllerDelegate> delegate;
 
-/** The base style of the PIN view controller. Can be configured further. */
-@property (nonatomic, assign) TOPasscodeViewStyle style;
-
 /** The type of passcode that is expected to be entered. */
 @property (nonatomic, readonly) TOPasscodeType passcodeType;
 
@@ -146,10 +143,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Create a new instance of this view controller with the preset style and passcode type.
 
- @param style The visual style of the view controller (light/translucent)
  @param type The type of passcode to enter (6-digit/numeric)
  */
-- (instancetype)initWithStyle:(TOPasscodeViewStyle)style passcodeType:(TOPasscodeType)type;
+- (instancetype)initPasscodeType:(TOPasscodeType)type;
 
 /**
  Hide everything except the background translucency view.

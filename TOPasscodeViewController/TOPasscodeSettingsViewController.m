@@ -53,16 +53,18 @@ const CGFloat kTOPasscodeKeypadMaxHeight = 330.0f;
 @property (nonatomic, strong) UIBarButtonItem *nextBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *doneBarButtonItem;
 
+/* Style */
+@property (nonatomic, assign) TOPasscodeSettingsViewStyle style;
+
 @end
 
 @implementation TOPasscodeSettingsViewController
 
 #pragma mark - Object Creation -
 
-- (instancetype)initWithStyle:(TOPasscodeSettingsViewStyle)style
+- (instancetype)init
 {
     if (self = [self initWithNibName:nil bundle:nil]) {
-        _style = style;
         [self setUp];
     }
 
@@ -82,9 +84,9 @@ const CGFloat kTOPasscodeKeypadMaxHeight = 330.0f;
 {
     if (@available(iOS 13.0, *)) {
         if ([self.traitCollection userInterfaceStyle] == UIUserInterfaceStyleDark) {
-            self.style = TOPasscodeViewStyleTranslucentDark;
+            self.style = TOPasscodeSettingsViewStyleDark;
         } else {
-            self.style = TOPasscodeViewStyleTranslucentLight;
+            self.style = TOPasscodeSettingsViewStyleLight;
         }
         [self applyThemeForStyle:_style];
     }
@@ -196,20 +198,6 @@ const CGFloat kTOPasscodeKeypadMaxHeight = 330.0f;
 
     self.state = self.requireCurrentPasscode ? TOPasscodeSettingsViewStateEnterCurrentPasscode : TOPasscodeSettingsViewStateEnterNewPasscode;
     [self updateContentForState:self.state type:self.passcodeType animated:NO];
-}
-
-- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection
-{
-    [super traitCollectionDidChange:previousTraitCollection];
-    
-    if (@available(iOS 13.0, *)) {
-        if ([self.traitCollection userInterfaceStyle] == UIUserInterfaceStyleDark) {
-            self.style = TOPasscodeViewStyleTranslucentDark;
-        } else {
-            self.style = TOPasscodeViewStyleTranslucentLight;
-        }
-        [self applyThemeForStyle:_style];
-    }
 }
 
 #pragma mark - View Update -

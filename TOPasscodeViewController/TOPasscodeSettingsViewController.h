@@ -73,9 +73,6 @@ NS_ASSUME_NONNULL_BEGIN
 /** The current state of the controller (confirming old passcode or creating a new one) */
 @property (nonatomic, assign) TOPasscodeSettingsViewState state;
 
-/** Set the visual style of the view controller (light or dark) */
-@property (nonatomic, assign) TOPasscodeSettingsViewStyle style;
-
 /** The input type of the passcode */
 @property (nonatomic, assign) TOPasscodeType passcodeType;
 
@@ -96,7 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param style The visual style of the view controller
  */
-- (instancetype)initWithStyle:(TOPasscodeSettingsViewStyle)style;
+- (instancetype)init;
 
 /*
  Changes the passcode type and animates if required

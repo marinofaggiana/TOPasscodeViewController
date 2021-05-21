@@ -42,6 +42,8 @@
 @property (nonatomic, strong, readwrite) UIButton *biometricButton;
 @property (nonatomic, strong, readwrite) UIButton *cancelButton;
 
+/* Style */
+@property (nonatomic, assign) TOPasscodeViewStyle style;
 
 @end
 
@@ -49,10 +51,9 @@
 
 #pragma mark - Instance Creation -
 
-- (instancetype)initWithStyle:(TOPasscodeViewStyle)style passcodeType:(TOPasscodeType)type
+- (instancetype)initPasscodeType:(TOPasscodeType)type
 {
     if (self = [super initWithNibName:nil bundle:nil]) {
-        _style = style;
         _passcodeType = type;
         [self setUp];
     }
@@ -83,6 +84,14 @@
     self.allowCancel = NO;
     self.handleDeletePress = YES;
 
+    if (@available(iOS 13.0, *)) {
+        if ([self.traitCollection userInterfaceStyle] == UIUserInterfaceStyleDark) {
+            self.style = TOPasscodeViewStyleTranslucentDark;
+        } else {
+            self.style = TOPasscodeViewStyleTranslucentLight;
+        }
+    }
+    
     if (TOPasscodeViewStyleIsTranslucent(self.style)) {
         self.modalPresentationStyle = UIModalPresentationOverFullScreen;
     }
