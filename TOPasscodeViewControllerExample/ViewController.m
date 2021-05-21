@@ -49,7 +49,7 @@
 
 - (IBAction)showButtonTapped:(id)sender
 {
-    TOPasscodeViewController *passcodeViewController = [[TOPasscodeViewController alloc] initPasscodeType:self.type];
+    TOPasscodeViewController *passcodeViewController = [[TOPasscodeViewController alloc] initPasscodeType:self.type allowCancel:true];
     passcodeViewController.delegate = self;
     passcodeViewController.allowBiometricValidation = self.biometricsAvailable;
     passcodeViewController.biometryType = self.faceIDAvailable ? TOPasscodeBiometryTypeFaceID : TOPasscodeBiometryTypeTouchID;

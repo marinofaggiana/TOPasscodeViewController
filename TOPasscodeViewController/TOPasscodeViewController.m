@@ -44,6 +44,7 @@
 
 /* Style */
 @property (nonatomic, assign) TOPasscodeViewStyle style;
+@property (nonatomic, assign) BOOL allowCancel;
 
 @end
 
@@ -51,10 +52,11 @@
 
 #pragma mark - Instance Creation -
 
-- (instancetype)initPasscodeType:(TOPasscodeType)type
+- (instancetype)initPasscodeType:(TOPasscodeType)type allowCancel:(BOOL)cancel
 {
     if (self = [super initWithNibName:nil bundle:nil]) {
         _passcodeType = type;
+        _allowCancel = cancel;
         [self setUp];
     }
 
@@ -81,7 +83,6 @@
 {
     self.transitioningDelegate = self;
     self.automaticallyPromptForBiometricValidation = NO;
-    self.allowCancel = NO;
     self.handleDeletePress = YES;
 
     if (@available(iOS 13.0, *)) {

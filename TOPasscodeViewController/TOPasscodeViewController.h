@@ -80,9 +80,6 @@ NS_ASSUME_NONNULL_BEGIN
 /** Will show a 'Touch ID' or 'Face ID' (depending on `biometricType`) button if the user is allowed to log in that way. (Default is NO) */
 @property (nonatomic, assign) BOOL allowBiometricValidation;
 
-/** Will show a default 'Cancel' button if rightAccessoryButton is not set. (Default is NO) */
-@property (nonatomic, assign) BOOL allowCancel;
-
 /** Will handle delete button press as delete last symbol (Default is YES) */
 @property (nonatomic, assign) BOOL handleDeletePress;
 
@@ -145,7 +142,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @param type The type of passcode to enter (6-digit/numeric)
  */
-- (instancetype)initPasscodeType:(TOPasscodeType)type;
+- (instancetype)initPasscodeType:(TOPasscodeType)type allowCancel:(BOOL)cancel;
 
 /**
  Hide everything except the background translucency view.
